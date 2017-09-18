@@ -13,7 +13,7 @@ class NUSID():
 
 def getSOAP(region): # hardcoded device id for now
 	soaprequest = '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><soapenv:Body><GetSystemUpdateRequest xmlns="urn:nus.wsapi.broadon.com"><Version>1.0</Version><MessageId>13198105123219138</MessageId><DeviceId>4362227770</DeviceId><RegionId>' + region + '</RegionId><CountryCode>' + region[:2] + '</CountryCode><TitleVersion><TitleId>0000000100000001</TitleId><Version>2</Version></TitleVersion><TitleVersion><TitleId>0000000100000002</TitleId><Version>33</Version></TitleVersion><TitleVersion><TitleId>0000000100000009</TitleId><Version>516</Version></TitleVersion><Attribute>2</Attribute><AuditData></AuditData></GetSystemUpdateRequest></soapenv:Body></soapenv:Envelope>'
-	headers = {"Content-type":"text/xml; charset=utf-8", "SOAPAction":'"urn:nus.wsapi.broadon.com/"', "User-agent":"wii libnup/1.0"}
+	headers = {"Content-type":"text/xml; charset=utf-8", "SOAPAction":'"urn:nus.wsapi.broadon.com/GetSystemUpdate"', "User-agent":"wii libnup/1.0"}
 	request = urllib2.Request("http://nus.shop.wii.com/nus/services/NetUpdateSOAP", soaprequest, headers)
 	f = urllib2.urlopen(request)
 	data = f.read()
